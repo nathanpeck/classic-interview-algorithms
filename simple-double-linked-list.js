@@ -1,4 +1,4 @@
-// Implement a doubly-linked list
+// Implement a doubly-linked list, with a way to reverse in place.
 
 var Node = function() {
   this.value = null;
@@ -58,6 +58,22 @@ List.prototype.toArray = function() {
   return values;
 }
 
+List.prototype.reverse = function() {
+  var pointer = this.start;
+  
+  while (pointer !== null) {
+    var tempNext = pointer.next;
+    pointer.next = pointer.prev;
+    pointer.prev = tempNext;
+    
+    pointer = tempNext;
+  }
+  
+  var tempStart = this.start;
+  this.start = this.end;
+  this.end = tempStart;
+};
+
 var list = new List();
 
 console.log(list.toArray());
@@ -72,4 +88,7 @@ list.push('c');
 console.log(list.toArray());
 
 list.unshift('z');
+console.log(list.toArray());
+
+list.reverse();
 console.log(list.toArray());
