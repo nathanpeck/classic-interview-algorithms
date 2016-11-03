@@ -11,8 +11,6 @@ function isPanagram(string) {
       alphabet[currentChar] = true;
     }
   }
-  
-  console.log(alphabet);
 
   if (Object.keys(alphabet).length == 26) {
     return true;
